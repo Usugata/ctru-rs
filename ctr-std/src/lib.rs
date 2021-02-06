@@ -274,7 +274,6 @@
 #![feature(never_type)]
 #![cfg_attr(not(stage0), feature(nll))]
 #![feature(exhaustive_patterns)]
-#![feature(on_unimplemented)]
 #![feature(optin_builtin_traits)]
 #![feature(panic_internals)]
 #![feature(panic_unwind)]
@@ -309,7 +308,7 @@
 #![feature(doc_alias)]
 #![feature(doc_keyword)]
 #![feature(panic_info_message)]
-#![feature(panic_implementation)]
+#![feature(panic_handler)]
 #![feature(non_exhaustive)]
 
 #![default_lib_allocator]
