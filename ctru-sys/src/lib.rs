@@ -7,7 +7,7 @@
 
 #![no_std]
 
-#![cfg_attr(feature = "stdbuild", feature(libc))]
+#![cfg_attr(feature = "build-std", feature(libc))]
 
 extern crate libc;
 

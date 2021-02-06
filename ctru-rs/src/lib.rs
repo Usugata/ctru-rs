@@ -1,7 +1,6 @@
 #![crate_type = "rlib"]
 #![crate_name = "ctru"]
 
-#![feature(fnbox)]
 #![feature(rustc_private)]
 
 #[macro_use]
