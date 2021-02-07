@@ -1,6 +1,7 @@
 use std::iter::once;
 use std::mem;
 use std::str;
+use std::convert::TryInto;
 
 use libctru::{self, SwkbdState, swkbdInit, swkbdSetFeatures, swkbdSetHintText, swkbdInputText,
               swkbdSetButton};
@@ -90,7 +91,7 @@ impl Swkbd {
     /// (from 1-3).
     pub fn init(keyboard_type: Kind, num_buttons: i32) -> Self {
         unsafe {
-            let mut state = Box::new(mem::uninitialized::<SwkbdState>());
+            let mut state = Box::new(SwkbdState::default());
             swkbdInit(state.as_mut(), keyboard_type as u32, num_buttons, -1);
             Swkbd { state }
         }
@@ -127,7 +128,7 @@ impl Swkbd {
     /// the output will be truncated but should still be well-formed UTF-8
     pub fn get_bytes(&mut self, buf: &mut [u8]) -> Result<Button, Error> {
         unsafe {
-            match swkbdInputText(self.state.as_mut(), buf.as_mut_ptr(), buf.len()) {
+            match swkbdInputText(self.state.as_mut(), buf.as_mut_ptr(), buf.len().try_into().unwrap()) {
                 libctru::SWKBD_BUTTON_NONE => Err(self.parse_swkbd_error()),
                 libctru::SWKBD_BUTTON_LEFT => Ok(Button::Left),
                 libctru::SWKBD_BUTTON_MIDDLE => Ok(Button::Middle),

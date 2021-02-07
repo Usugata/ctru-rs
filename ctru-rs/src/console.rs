@@ -15,7 +15,7 @@ impl Console {
     /// printing.
     pub fn init(screen: Screen) -> Self {
         unsafe {
-            let mut context = Box::new(mem::uninitialized::<PrintConsole>());
+            let mut context = Box::new(PrintConsole::default());
             consoleInit(screen.into(), context.as_mut());
             Console { context, }
         }

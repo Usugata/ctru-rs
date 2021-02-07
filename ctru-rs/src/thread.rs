@@ -892,6 +892,7 @@ mod imp {
     use std::mem;
     use std::ptr;
     use std::time::Duration;
+    use std::convert::TryInto;
 
     use libc;
 
@@ -920,7 +921,7 @@ mod imp {
             let handle = threadCreate(
                 Some(thread_func),
                 &*p as *const _ as *mut _,
-                stack_size,
+                stack_size.try_into().unwrap(),
                 priority,
                 affinity,
                 false,

@@ -23,6 +23,8 @@ bindgen "$DEVKITPRO/libctru/include/3ds.h" \
     --blacklist-type "u(8|16|32|64)" \
     --blacklist-type "__builtin_va_list" \
     --blacklist-type "__va_list" \
+    --opaque-type "MiiData" \
+    --with-derive-default \
     -- \
     --target=arm-none-eabi \
     --sysroot=$DEVKITARM/arm-none-eabi \
