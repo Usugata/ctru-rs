@@ -878,7 +878,7 @@ fn truncate_utf16_at_nul<'a>(v: &'a [u16]) -> &'a [u16] {
 // Implementations using this method have to adhere to two guarantees:
 //  *  The implementation of read never reads the buffer provided.
 //  *  The implementation of read correctly reports how many bytes were written.
-unsafe fn read_to_end_uninitialized(r: &mut Read, buf: &mut Vec<u8>) -> IoResult<usize> {
+unsafe fn read_to_end_uninitialized(r: &mut dyn Read, buf: &mut Vec<u8>) -> IoResult<usize> {
     let start_len = buf.len();
     buf.reserve(16);
 

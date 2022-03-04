@@ -5,8 +5,8 @@
 //! the accelerometer, and the gyroscope.
 
 
-/// A set of flags corresponding to the button and directional pad
-/// inputs on the 3DS
+// A set of flags corresponding to the button and directional pad
+// inputs on the 3DS
 bitflags! {
     #[derive(Default)]
     pub struct KeyPad: u32 {

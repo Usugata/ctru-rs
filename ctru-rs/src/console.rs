@@ -1,5 +1,4 @@
 use std::default::Default;
-use std::mem;
 
 use libctru::{PrintConsole, consoleInit, consoleSelect, consoleClear, consoleSetWindow};
 

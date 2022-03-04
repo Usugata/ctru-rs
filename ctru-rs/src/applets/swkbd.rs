@@ -1,5 +1,4 @@
 use std::iter::once;
-use std::mem;
 use std::str;
 use std::convert::TryInto;
 
@@ -59,7 +58,7 @@ pub enum ValidInput {
     FixedLen,
 }
 
-/// Keyboard feature flags
+// Keyboard feature flags
 bitflags! {
     pub struct Features: u32 {
         const PARENTAL_PIN      = 1 << 0;
@@ -74,7 +73,7 @@ bitflags! {
     }
 }
 
-/// Keyboard input filtering flags
+// Keyboard input filtering flags
 bitflags! {
     pub struct Filters: u32 {
         const DIGITS    = 1 << 0;
